@@ -2,7 +2,9 @@
 
 	<body>
 	  <h1>Congrats' you got admission in the most fuddu college of india </h1>
-	  <h2>${msg}</h2>
+	  <p> Stuent's Name : ${student1.studentName} </p>
+	  <p> Stuent's Hobby : ${student1.studentHobby} </p>
+		
 	</body>
 
 </html>
