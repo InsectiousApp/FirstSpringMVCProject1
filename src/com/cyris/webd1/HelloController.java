@@ -1,20 +1,32 @@
 package com.cyris.webd1;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
  
-public class HelloController extends AbstractController{
+@Controller
+public class HelloController{
  
-	@Override
-	protected ModelAndView handleRequestInternal(HttpServletRequest request,
-		HttpServletResponse response) throws Exception {
- 
-		ModelAndView modelandview = new ModelAndView("HelloPage");
-		modelandview.addObject("msg", "Hi User, welcome to the first Spring MVC Application");
+	@RequestMapping("/main")
+	public ModelAndView helloworld(@PathVariable Map<String,String> pathVars){
 		
-		return modelandview;
+		String name=pathVars.get("username");
+		String countryname=pathVars.get("countryname");
+		
+		ModelAndView model=new ModelAndView("HelloPage");
+		model.addObject("msg", "Hi "+name+" welcome to "+countryname);
+		return model;
 	}
+	
+	@RequestMapping("/main/index")
+	public ModelAndView mainfunction(){
+		ModelAndView model=new ModelAndView("HelloPage");
+		model.addObject("msg", "hey");
+		return model;
+	}
+	
+	
 }
