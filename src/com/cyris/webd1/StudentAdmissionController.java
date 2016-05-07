@@ -2,9 +2,9 @@ package com.cyris.webd1;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
  
 @Controller
@@ -19,14 +19,10 @@ public class StudentAdmissionController{
 	}
 
 	@RequestMapping(value="/admissionformsuccess", method=RequestMethod.POST)
-	public ModelAndView mainfunction(@RequestParam(value="studentName", defaultValue="Mr. Chetan") String name, @RequestParam(value="studentHobby", defaultValue="GYM") String hobby){
+	public ModelAndView mainfunction(@ModelAttribute("student1") Student student1){
 		
-		Student student1=new Student();
-		student1.setStudentName(name);
-		student1.setStudentHobby(hobby);
 		
 		ModelAndView model=new ModelAndView("admissionformsuccess");
-		model.addObject("student1", student1);
 		return model;
 		
 	}
